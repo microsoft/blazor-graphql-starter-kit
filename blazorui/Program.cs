@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Components.WebAssembly.Authentication;
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -22,7 +23,20 @@ namespace blazorui
             builder.Services.AddMsalAuthentication(options =>
             {
                 builder.Configuration.Bind("AzureAd", options.ProviderOptions.Authentication);
+                options.ProviderOptions.LoginMode = "redirect";
+                options.ProviderOptions.DefaultAccessTokenScopes.Add("openid");
+                options.ProviderOptions.DefaultAccessTokenScopes.Add(builder.Configuration["APIScope"]);
+                
             });
+       
+            builder.Services.AddHttpClient<GraphQLAPIClient>(
+                    client => client.BaseAddress = new Uri("https://www.example.com/base"))
+                    .AddHttpMessageHandler(sp => sp.GetRequiredService<BaseAddressAuthorizationMessageHandler>()
+                        .ConfigureHandler(
+                            authorizedUrls: new[] { builder.Configuration["APIBaseURL"] },
+                            scopes: new[] { builder.Configuration["APIScope"] }));
+
+
 
             await builder.Build().RunAsync();
         }
