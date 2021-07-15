@@ -1,14 +1,35 @@
 # Project
 
-> This repo has been populated by an initial template to help get you started. Please
-> make sure to update the content to build a great experience for community-building.
+> This repo contains sample code for creating a secure app with the following stack.
+> UI: Blazor Web Assembly (WASM)
+> API: GraphQL based on the HotChocolate package
 
-As the maintainer of this project, please make a few updates:
+> In this app the UI uses Azure AD for auth.  The API is protected and only accepts authorized requests with a valid Oaauth token.
 
-- Improving this README.MD file to provide a great experience
-- Updating SUPPORT.MD with content about this project's support experience
-- Understanding the security reporting process in SECURITY.MD
-- Remove this section from the README
+
+## Steps to deploy in your Azure subscription
+
+### Azure AD
+API App Registration
+* Create an App Registration for the API.
+* Add a Client Secret
+* Expose an API 
+* Add the UI App Registration as a valid client
+
+UI App Registration
+* Create an App Registration for the UI
+* Add API Permissions for Microsoft Graph profile
+* Add the API Exposed API you created above
+
+
+### Blazor App
+* Open the solution file
+* Edit the app-settings.json file
+* Run locally
+* Create an Azure Static Blob site
+* Configure the Azure Static Blob Site
+* Deploy to a static blob site
+
 
 ## Contributing
 
