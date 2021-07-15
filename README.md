@@ -9,23 +9,96 @@
 
 ## Steps to deploy in your Azure subscription
 
+### Azure Storage Static Site
+Follow these instructions to create a static site: https://docs.microsoft.com/en-us/azure/storage/blobs/storage-blob-static-website
+Example name used in this starter kit: blazorgraphqlui
+
+### Azure App Service (dotnet core, Windows)
+Follow these instructions to create a dotnet Windows site: https://docs.microsoft.com/en-us/azure/app-service/quickstart-arm-template?pivots=platform-linux
+Example name used in this starter kit: blazorgraphqlapi
+
 ### Azure AD
 API App Registration
-* Create an App Registration for the API.
-* Add a Client Secret
-* Expose an API 
-* Add the UI App Registration as a valid client
+**Create an App Registration for the API**
+Name: blazor-graphql-api
+Accounts in this organization
+Redirect URL: https://localhost:5001/.auth/login/aad/callback https://blazorgraphqlapi.azurewebsites.net/.auth/login/aad/callback
 
-UI App Registration
-* Create an App Registration for the UI
-* Add API Permissions for Microsoft Graph profile
-* Add the API Exposed API you created above
+Add a Client Secret:
+In the Portal click "Certificates and Secrets" and add a new one.  Please copy it somewhere safe.
 
+Expose an API 
+In the portal click on Expose an API.
+Add a new scope:
+leave the api url the same (ex: api://18715d1e-141c-445e-999c-432aba6f12d2)
+
+scope: graphql.all
+Who can consent: Admins and users
+Admin Consent Title: AdminGraphConsent
+Admin Consent Description: Allows users to read graphql data
+User Consent Title: UserGraphConsent
+User Consent Description: 
+Status: Enabled
+Click Save and ok.
+
+
+
+**Things you will need for further setup (copy somewhere)
+Client ID
+Client Secret
+API Url (ex: api://18715d1e-141c-445e-999c-432aba6f12d2))
+Tenant ID
+
+
+#### UI App Registration
+
+**Create an App Registration for the UI**
+
+Name: blazor-graphql-ui
+Accounts in this organization
+Redirect URLs: (Single Page App): https://localhost:5001/authentication/callback https://blazorgraphqlui.azurewebsites.net/authentication/callback
+
+**Configure the App Registration**
+In the portal click on Authentication
+Check both ID Token and Access Token boxes
+
+**Add API Permissions**
+In the portal click on API Permissions
+Click + Add a New Permission
+Click on "My APIs"
+Click on the API you exposed earlier (for example: blazor-graphql-api)
+Check the checkbox for 'graphql.all'
+Click 'Add Permission'
+
+
+
+**Things you will need for further setup (copy somewhere)
+Client ID
+Tenant ID
+
+Now go back to the App Registration you created for the API.
+Click on Expose an API
+And add the UI app's client ID to the list of authorized Apps.'
 
 ### Blazor App
+From Nothing:
+* Create new VS Solution with a Blazor App with Microsoft Identity Provider Auth.
+----
 * Open the solution file
-* Edit the app-settings.json file
-* Run locally
+* Edit the app-settings.json file with your client id and tenant
+EX (Note below values are not valid and need to be replaced with valid values
+```json
+  "AzureAd": {
+    "Authority": "https://login.microsoftonline.com/5df988bf-86f1-41af-91ab-2d7cd011db47",
+    "ClientId": "2c92f0fd-70bf-468a-83d7-94f8a3074650",
+    "ValidateAuthority": true
+  }
+}
+```
+
+* Run locally (Press F5)
+If your app runs on https://localhost:44362 then you should be able to login.  If your app runs on another port or runs in http then please change the blazor-graphql app registration's reply_url.'
+
 * Create an Azure Static Blob site
 * Configure the Azure Static Blob Site
 * Deploy to a static blob site
