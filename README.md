@@ -100,9 +100,12 @@ EX (Note below values are not valid and need to be replaced with valid values
 If your app runs on https://localhost:44362 then you should be able to login.  If your app runs on another port or runs in http then please change the blazor-graphql app registration's reply_url.'
 
 * Create an Azure Static Blob site
+* Enable static website hosting: https://docs.microsoft.com/en-us/azure/storage/blobs/storage-blob-static-website-how-to?tabs=azure-portal#enable-static-website-hosting
 * Configure the Azure Static Blob Site
 * Deploy to a static blob site
 
+
+* Use Azure Active Directory (AAD) for authentication: https://docs.microsoft.com/en-us/aspnet/core/blazor/security/webassembly/standalone-with-azure-active-directory?view=aspnetcore-5.0
 
 ## Contributing
 
