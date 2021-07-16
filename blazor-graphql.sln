@@ -11,6 +11,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "docs", "docs", "{4A0F6DD7-A
 		README.md = README.md
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "graphqlapi", "graphqlapi\graphqlapi.csproj", "{91E8F377-83D4-4E3D-95FC-CF49CCBCBE1F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{D9CCE19A-A3DD-4DFF-8588-372FB9CA5F3E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D9CCE19A-A3DD-4DFF-8588-372FB9CA5F3E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D9CCE19A-A3DD-4DFF-8588-372FB9CA5F3E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{91E8F377-83D4-4E3D-95FC-CF49CCBCBE1F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{91E8F377-83D4-4E3D-95FC-CF49CCBCBE1F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{91E8F377-83D4-4E3D-95FC-CF49CCBCBE1F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{91E8F377-83D4-4E3D-95FC-CF49CCBCBE1F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

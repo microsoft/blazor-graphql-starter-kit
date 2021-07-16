@@ -54,34 +54,54 @@ Tenant ID
 
 **Create an App Registration for the UI**
 
-Name: blazor-graphql-ui
+Name: (*for exampl*)blazor-graphql-ui
 Accounts in this organization
 Redirect URLs: (Single Page App): https://localhost:5001/authentication/callback https://blazorgraphqlui.azurewebsites.net/authentication/callback
 
 **Configure the App Registration**
+
 In the portal click on Authentication
+
 Check both ID Token and Access Token boxes
 
+Click **+ Add a Platform** and add Single Page Application and put down the callback url (for example, https://localhost:44362/authentication/login-callback)
+
+If you want to separately test out the API with out the blazor portion you can use apps like *Postman*.
+
+- Go to your UI app and click Overview > then click *Endpoints* you should be able to see the auth / access token url you need to use for your jwt token.
+- Add Web Redirect URL (for example, https://oauth.pstmn.io/v1/callback)
+- *If you have Multifactor Auth you must use Authorize wtih PKCE in the postman app.*
+
 **Add API Permissions**
+
 In the portal click on API Permissions
+
 Click + Add a New Permission
+
 Click on "My APIs"
+
 Click on the API you exposed earlier (for example: blazor-graphql-api)
+
 Check the checkbox for 'graphql.all'
+
 Click 'Add Permission'
 
-
-
 **Things you will need for further setup (copy somewhere)
+
 Client ID
+
 Tenant ID
 
+
 Now go back to the App Registration you created for the API.
+
 Click on Expose an API
+
 And add the UI app's client ID to the list of authorized Apps.'
 
 ### Blazor App
 From Nothing:
+
 * Create new VS Solution with a Blazor App with Microsoft Identity Provider Auth.
 ----
 * Open the solution file
@@ -106,6 +126,26 @@ If your app runs on https://localhost:44362 then you should be able to login.  I
 
 
 * Use Azure Active Directory (AAD) for authentication: https://docs.microsoft.com/en-us/aspnet/core/blazor/security/webassembly/standalone-with-azure-active-directory?view=aspnetcore-5.0
+
+### .Net Core Api (with GraphQL)
+
+* Create new VS Solution with a .Net Core Api with Microsoft Identity Provider Auth.
+----
+* Open the solution file
+* Edit the app-settings.json file with your client id and tenant
+EX (Note below values are not valid and need to be replaced with valid values
+```json
+  {
+  "AzureAd": {
+    "Instance": "https://login.microsoftonline.com/",
+    "Domain": "<name your tenant>.onmicrosoft.com",
+    "TenantId": "<Tenant id>",
+    "ClientId": "<UI app regisration ID>",
+    "ClientSecret": "<UI app regisration SECRET>"
+  }
+}
+```
+
 
 ## Contributing
 
