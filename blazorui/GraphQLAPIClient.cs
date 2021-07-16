@@ -16,27 +16,20 @@ namespace blazorui
             _httpClient = httpClient;
         }
 
-        public async Task<JsonContent> PostAsync()
+        public async Task<string> GetHelloworld()
         {
-            var query = new StringContent(
-                JsonSerializer.Serialize(this),
-                Encoding.UTF8,
-                "application/json");
-            JsonContent data = null;
-            try
+            GraphQLRequest request = new GraphQLRequest(_httpClient)
             {
-                var response = await _httpClient.PostAsync("graphql", query);
-                if (response.IsSuccessStatusCode)
-                {
-                    var stream = await response.Content.ReadAsStreamAsync();
-                    data = await JsonSerializer.DeserializeAsync<JsonContent>(stream);
-                }
-            }
-            catch (AccessTokenNotAvailableException exception)
-            {
-                exception.Redirect();
-            }
-             return data;
+                OperationName = "welcome",
+                Query = @"{
+                            welcome{}
+                        }"
+            };
+
+            string response = (await request.PostAsync()).RootElement.GetProperty("welcome").GetString();
+
+            return response;
         }
+       
     }
 }

@@ -88,6 +88,8 @@ From Nothing:
 * Edit the app-settings.json file with your client id and tenant
 EX (Note below values are not valid and need to be replaced with valid values
 ```json
+  "APIBaseURL": "https://blazorgraphqlapi.azurewebsites.net",
+  "APIScope": "api://187<replace..........>2d2/graphql.all",
   "AzureAd": {
     "Authority": "https://login.microsoftonline.com/5df988bf-86f1-41af-91ab-2d7cd011db47",
     "ClientId": "2c92f0fd-70bf-468a-83d7-94f8a3074650",

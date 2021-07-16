@@ -18,7 +18,7 @@ namespace blazorui
             var builder = WebAssemblyHostBuilder.CreateDefault(args);
             builder.RootComponents.Add<App>("#app");
 
-            builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri(builder.HostEnvironment.BaseAddress) });
+            
 
             builder.Services.AddMsalAuthentication(options =>
             {
@@ -28,11 +28,13 @@ namespace blazorui
                 options.ProviderOptions.DefaultAccessTokenScopes.Add(builder.Configuration["APIScope"]);
                 
             });
-       
+
+            //builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri(builder.HostEnvironment.BaseAddress) });
+
             builder.Services.AddHttpClient<GraphQLAPIClient>(
-                    client => client.BaseAddress = new Uri("https://www.example.com/base"))
-                    .AddHttpMessageHandler(sp => sp.GetRequiredService<BaseAddressAuthorizationMessageHandler>()
-                        .ConfigureHandler(
+                    client => client.BaseAddress = new Uri(builder.Configuration["APIBaseURL"]))
+                    .AddHttpMessageHandler(sp => sp.GetRequiredService<AuthorizationMessageHandler>()
+                    .ConfigureHandler(
                             authorizedUrls: new[] { builder.Configuration["APIBaseURL"] },
                             scopes: new[] { builder.Configuration["APIScope"] }));
 

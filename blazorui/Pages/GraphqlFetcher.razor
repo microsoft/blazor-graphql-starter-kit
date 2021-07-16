@@ -1,0 +1,14 @@
+﻿@page "/call"
+<h3>GraphqlFetcher</h3>
+If GraphQL Call Finished:
+@if (graphqlcallfinished)
+{
+	<p>Done</p>
+}
+else
+{
+	<p>Still happening....</p>
+}
+
+GraphQL Response:
+@graphqlresponse
