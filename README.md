@@ -142,8 +142,8 @@ EX (Note below values are not valid and need to be replaced with valid values
     "Instance": "https://login.microsoftonline.com/",
     "Domain": "<name your tenant>.onmicrosoft.com",
     "TenantId": "<Tenant id>",
-    "ClientId": "<UI app regisration ID>",
-    "ClientSecret": "<UI app regisration SECRET>"
+    "ClientId": "<API app regisration ID>",
+    "ClientSecret": "<API app regisration SECRET>"
   }
 }
 ```
