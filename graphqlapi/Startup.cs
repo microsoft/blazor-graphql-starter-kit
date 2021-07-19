@@ -30,6 +30,13 @@ namespace graphqlapi
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddCors(o => o.AddDefaultPolicy(b =>
+                    b.AllowAnyHeader()
+                    .AllowAnyMethod()
+                    .AllowAnyOrigin()
+                )
+            );
+
             services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
                 .AddMicrosoftIdentityWebApi(Configuration.GetSection("AzureAd"));
 
@@ -45,11 +52,6 @@ namespace graphqlapi
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "graphqlapi", Version = "v1" });
             });
 
-            services.AddCors(option => {
-                option.AddPolicy("allowedOrigin",
-                    builder => builder.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader()
-                    );
-            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
