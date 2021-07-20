@@ -147,7 +147,9 @@ EX (Note below values are not valid and need to be replaced with valid values
   }
 }
 ```
-
+## Additional Resources
+* What is Blazor - https://docs.microsoft.com/en-us/aspnet/core/blazor/?view=aspnetcore-5.0
+* Build your first Blazor app - https://dotnet.microsoft.com/learn/aspnet/blazor-tutorial/intro
 
 ## Contributing
 
