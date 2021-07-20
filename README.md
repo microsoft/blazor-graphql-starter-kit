@@ -74,17 +74,12 @@ If you want to separately test out the API with out the blazor portion you can u
 
 **Add API Permissions**
 
-In the portal click on API Permissions
-
-Click + Add a New Permission
-
-Click on "My APIs"
-
-Click on the API you exposed earlier (for example: blazor-graphql-api)
-
-Check the checkbox for 'graphql.all'
-
-Click 'Add Permission'
+* In the portal click on API Permissions
+* Click + Add a New Permission
+* Click on "My APIs"
+* Click on the API you exposed earlier (for example: blazor-graphql-api)
+* Check the checkbox for 'graphql.all'
+* Click 'Add Permission'
 
 **Things you will need for further setup (copy somewhere)
 
