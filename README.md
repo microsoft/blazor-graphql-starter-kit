@@ -23,6 +23,8 @@ Example name used in this starter kit: _blazorgraphqlapi_
 
 ## Azure AD
 
+> Go and read more about [Authentication and Authorization in AzureAd](https://github.com/microsoft/emerging-opportunities/tree/main/.NET/Authentication)
+
 ### Create API App Registration
 
 1. Name: _blazor-graphql-api_
