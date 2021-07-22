@@ -13,43 +13,40 @@
 
 ### Azure Storage Static Site
 Follow these instructions to create a static site: https://docs.microsoft.com/en-us/azure/storage/blobs/storage-blob-static-website
-Example name used in this starter kit: blazorgraphqlui
+
+Example name used in this starter kit: _blazorgraphqlui_
 
 ### Azure App Service (dotnet core, Windows)
 Follow these instructions to create a dotnet Windows site: https://docs.microsoft.com/en-us/azure/app-service/quickstart-arm-template?pivots=platform-linux
-Example name used in this starter kit: blazorgraphqlapi
+
+Example name used in this starter kit: _blazorgraphqlapi_
 
 ### Azure AD
 API App Registration
+
 **Create an App Registration for the API**
-Name: blazor-graphql-api
-Accounts in this organization
-Redirect URL: https://localhost:5001/.auth/login/aad/callback https://blazorgraphqlapi.azurewebsites.net/.auth/login/aad/callback
 
-Add a Client Secret:
-In the Portal click "Certificates and Secrets" and add a new one.  Please copy it somewhere safe.
+- Name: _blazor-graphql-api_
+- Select Multi or Single Tenant (we used single tenant for our example)
+- Redirect URL: 
+    - https://localhost:<port>/.auth/login/aad/callback 
+    - https://blazorgraphqlapi.azurewebsites.net/.auth/login/aad/callback
+- Click "Certificates and Secrets" and add a new secret. **Please store it somewhere safe**
+- Click Expose API 
+  - Add a new scope: leave the api url the same (ex: api://x8xxd1e-141c-xxxxxx-32aba6f12dxx)
+  - scope: graphql.all
+    - Who can consent: Admins and users
+      - Fill out consent title and descripton for both Admin and User
+  
+_Things you will need for further setup (copy somewhere)_
 
-Expose an API 
-In the portal click on Expose an API.
-Add a new scope:
-leave the api url the same (ex: api://18715d1e-141c-445e-999c-432aba6f12d2)
+**Client ID**
 
-scope: graphql.all
-Who can consent: Admins and users
-Admin Consent Title: AdminGraphConsent
-Admin Consent Description: Allows users to read graphql data
-User Consent Title: UserGraphConsent
-User Consent Description: 
-Status: Enabled
-Click Save and ok.
-
-
-
-**Things you will need for further setup (copy somewhere)
-Client ID
-Client Secret
-API Url (ex: api://18715d1e-141c-445e-999c-432aba6f12d2))
-Tenant ID
+**Client Secret**
+  
+**API Url** (ex: api://18715d1e-141c-445e-999c-432aba6f12d2))
+  
+**Tenant ID**
 
 
 #### UI App Registration
@@ -146,6 +143,7 @@ EX (Note below values are not valid and need to be replaced with valid values
 ```
 ## Additional Resources
 * What is Blazor - https://docs.microsoft.com/en-us/aspnet/core/blazor/?view=aspnetcore-5.0
+
 * Build your first Blazor app - https://dotnet.microsoft.com/learn/aspnet/blazor-tutorial/intro
 
 ## Contributing
