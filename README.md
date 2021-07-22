@@ -4,6 +4,8 @@
 > UI: Blazor Web Assembly (WASM)
 > API: GraphQL based on the HotChocolate package
 
+[What is a GraphQL?](https://github.com/microsoft/emerging-opportunities/tree/main/MotherBox/GraphQL)
+
 > In this app the UI uses Azure AD for auth.  The API is protected and only accepts authorized requests with a valid Oaauth token.
 
 
