@@ -21,23 +21,23 @@ Follow these instructions to create a dotnet Windows site: https://docs.microsof
 
 Example name used in this starter kit: _blazorgraphqlapi_
 
-### Azure AD
-API App Registration
+## Azure AD
 
-**Create an App Registration for the API**
+### Create API App Registration
 
-- Name: _blazor-graphql-api_
-- Select Multi or Single Tenant (we used single tenant for our example)
-- Redirect URL: 
-    - https://localhost:<port>/.auth/login/aad/callback 
-    - https://blazorgraphqlapi.azurewebsites.net/.auth/login/aad/callback
-- Click "Certificates and Secrets" and add a new secret. **Please store it somewhere safe**
-- Click Expose API 
+1. Name: _blazor-graphql-api_
+2. Select Multi or Single Tenant (we used single tenant for our example)
+3. Redirect URL: 
+  - https://localhost:<port>/.auth/login/aad/callback 
+  - https://blazorgraphqlapi.azurewebsites.net/.auth/login/aad/callbackClick 
+4. "Certificates and Secrets" and add a new secret. **Please store it somewhere safe**
+5. Click Expose API 
   - Add a new scope: leave the api url the same (ex: api://x8xxd1e-141c-xxxxxx-32aba6f12dxx)
   - scope: graphql.all
     - Who can consent: Admins and users
       - Fill out consent title and descripton for both Admin and User
   
+
 _Things you will need for further setup (copy somewhere)_
 
 **Client ID**
@@ -49,27 +49,25 @@ _Things you will need for further setup (copy somewhere)_
 **Tenant ID**
 
 
-#### UI App Registration
+### Create UI App Registration
 
-**Create an App Registration for the UI**
+Name: (*for example*)
+blazor-graphql-ui
 
-Name: (*for exampl*)blazor-graphql-ui
-Accounts in this organization
-Redirect URLs: (Single Page App): https://localhost:5001/authentication/callback https://blazorgraphqlui.azurewebsites.net/authentication/callback
+Accounts in this organization (single or multi)
+    
+Redirect URLs: 
+    - (Single Page App): https://localhost:5001/authentication/callback 
+    - https://blazorgraphqlui.azurewebsites.net/authentication/callback
 
-**Configure the App Registration**
+Click on Authentication
+  - Check both ID Token and Access Token boxes
+  - Click **+ Add a Platform** and add Single Page Application and put down the callback url (for example, https://localhost:44362/authentication/login-callback)
 
-In the portal click on Authentication
+_If you want to separately test out the API with out the blazor portion you can use apps like *Postman*._
 
-Check both ID Token and Access Token boxes
-
-Click **+ Add a Platform** and add Single Page Application and put down the callback url (for example, https://localhost:44362/authentication/login-callback)
-
-If you want to separately test out the API with out the blazor portion you can use apps like *Postman*.
-
-- Go to your UI app and click Overview > then click *Endpoints* you should be able to see the auth / access token url you need to use for your jwt token.
-- Add Web Redirect URL (for example, https://oauth.pstmn.io/v1/callback)
-- *If you have Multifactor Auth you must use Authorize wtih PKCE in the postman app.*
+    - Add Web Redirect URL (for example, https://oauth.pstmn.io/v1/callback)
+    - *If you have Multifactor Auth you must use Authorize wtih PKCE in the postman app.*
 
 **Add API Permissions**
 
@@ -80,13 +78,14 @@ If you want to separately test out the API with out the blazor portion you can u
 * Check the checkbox for 'graphql.all'
 * Click 'Add Permission'
 
-**Things you will need for further setup (copy somewhere)
+_Things you will need for further setup (copy somewhere)_
 
-Client ID
+**Client ID**
 
-Tenant ID
+**Tenant ID**
 
-
+## Tie the UI and the API registration
+    
 Now go back to the App Registration you created for the API.
 
 Click on Expose an API
@@ -94,6 +93,7 @@ Click on Expose an API
 And add the UI app's client ID to the list of authorized Apps.'
 
 ### Blazor App
+    
 From Nothing:
 
 * Create new VS Solution with a Blazor App with Microsoft Identity Provider Auth.
