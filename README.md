@@ -1,5 +1,11 @@
 # Project
 
+## How did this template come about?
+
+We wanted to create a one stop tutorial for anyone wanting to create their own Blazor WASM application backed by GraphQL / EntityFramework. 
+
+> Go [check out](https://github.com/microsoft/emerging-opportunities/blob/main/MotherBox/Readme.md) our internal tool that inspired us to create this template
+
 > This repo contains sample code for creating a secure app with the following stack.
 > UI: Blazor Web Assembly (WASM)
 > API: GraphQL based on the HotChocolate package
