@@ -2,7 +2,6 @@
 
 namespace graphqlapi.Resolvers
 {
-    [Authorize]
     public class Query
     {
         public string Welcome()
