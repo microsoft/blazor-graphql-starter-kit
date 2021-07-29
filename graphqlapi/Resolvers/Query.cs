@@ -1,13 +1,12 @@
-﻿using HotChocolate.AspNetCore.Authorization;
+﻿using System.Security.Claims;
 
 namespace graphqlapi.Resolvers
 {
-    [Authorize]
     public class Query
     {
-        public string Welcome()
+        public string Welcome(ClaimsPrincipal claimsPrincipal)
         {
-            return "Congrats on making your first query!";
+            return $"Congrats on making your first query!. You are authenticated as: {claimsPrincipal.Identity.Name}";
         }
     }
 }
