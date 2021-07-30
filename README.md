@@ -18,14 +18,67 @@ We wanted to create a one stop tutorial for anyone wanting to create their own B
 ## Steps to deploy in your Azure subscription
 
 ### Azure Storage Static Site
+<hr/>
 Follow these instructions to create a static site: https://docs.microsoft.com/en-us/azure/storage/blobs/storage-blob-static-website
 
 Example name used in this starter kit: _blazorgraphqlui_
 
+
 ### Azure App Service (dotnet core, Windows)
+<hr/>
 Follow these instructions to create a dotnet Windows site: https://docs.microsoft.com/en-us/azure/app-service/quickstart-arm-template?pivots=platform-linux
 
 Example name used in this starter kit: _blazorgraphqlapi_
+
+### Azure Static Web App
+<hr/>
+
+Azure Static Web Apps provides two options for deployment configuration:
+- Github
+- Other
+
+#### Github
+When choosing the 'Github' deployment option, Azure Static Web Apps will add a Github action to your selected repository. This will automatically build and deploy your site whenever a code change is pushed.
+
+Browse to the Azure Portal and create a new Azure Static Web App using this [quick start guide](https://docs.microsoft.com/en-us/azure/static-web-apps/get-started-portal?tabs=vanilla-javascript#create-a-static-web-app)
+
+> ** Note that you are not deploying an API to Azure Functions with this starter kit **
+
+Your configuration should look similar to the following:
+
+![Create Static WebApp](./docs/create_static_webapp.png)
+
+1. Click "Review+Create" to review your settings
+1. Click "Create"
+
+#### Other
+When choosing the 'Other' deployment option, Azure Static Web Apps will provide you with a Deployment Token. This can be used to establish a secure connection from other devops systems.
+
+In this example, we will be using Azure DevOps.
+
+Follow this guide to configure [Deployment from Azure DevOps](https://docs.microsoft.com/en-us/azure/static-web-apps/publish-devops#create-a-static-web-app)
+
+After step 4, your YAML should look like the following:
+
+```YAML
+trigger:
+  - main
+
+pool:
+  vmImage: ubuntu-latest
+
+steps:
+  - checkout: self
+    submodules: true
+  - task: AzureStaticWebApp@0
+    inputs:
+      app_location: 'blazorui'
+      api_location: ''
+      output_location: 'wwwroot'
+      azure_static_web_apps_api_token: $(deployment_token)
+```
+
+<hr/>
 
 ## Azure AD
 
