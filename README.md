@@ -24,7 +24,7 @@ Follow these instructions to create a static site: https://docs.microsoft.com/en
 Example name used in this starter kit: _blazorgraphqlui_
 
 
-### Azure App Service (.NET core, Windows)
+### Azure App Service (.NET Core, Windows)
 <hr/>
 Follow these instructions to create a .NET Windows site: https://docs.microsoft.com/en-us/azure/app-service/quickstart-arm-template?pivots=platform-linux
 
