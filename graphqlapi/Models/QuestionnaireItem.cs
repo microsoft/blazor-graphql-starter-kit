@@ -12,6 +12,12 @@ namespace graphqlapi.Models
         [JsonPropertyName("definition")]
         public Uri Definition { get; set; }
 
+        [JsonPropertyName("code")]
+        public IList<Coding> Code { get; set; }
+
+        [JsonPropertyName("type")]
+        public QuestionnaireItemType Type { get; set; }
+
         [JsonPropertyName("prefix")]
         public string Prefix { get; set; }
 

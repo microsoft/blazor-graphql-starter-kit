@@ -51,6 +51,9 @@ namespace graphqlapi.Models
         [JsonPropertyName("effectivePeriod")]
         public Period EffectivePeriod { get; set; }
 
+        [JsonPropertyName("code")]
+        public IList<Coding> Code { get; set; }
+
         [JsonPropertyName("item")]
         public IList<QuestionnaireItem> Items { get; set; }
     }
