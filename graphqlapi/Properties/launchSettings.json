@@ -12,12 +12,16 @@
     "IIS Express": {
       "commandName": "IISExpress",
       "launchBrowser": true,
-      "launchUrl": "graphql"
+      "launchUrl": "graphql",
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development"
+      },
+      "ancmHostingModel": "InProcess"
     },
     "graphqlapi": {
       "commandName": "Project",
       "launchBrowser": true,
-      "launchUrl": "swagger",
+      "launchUrl": "graphql",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       },

@@ -1,6 +1,7 @@
 ﻿@page "/call"
+<h3>Access Token</h3>
+<p>@AccessToken</p>
 <h3>GraphqlFetcher</h3>
-If GraphQL Call Finished:
 @if (graphqlcallfinished)
 {
 	<p>Done</p>
@@ -11,4 +12,9 @@ else
 }
 
 GraphQL Response:
-@graphqlresponse
+<p>
+    @graphqlresponse
+	@if(Errors.Length > 0) { 
+		<span class="text-warning">@Errors</span>
+	}
+</p>
