@@ -18,7 +18,7 @@ namespace blazorui
 
         public async Task<string> GetHelloworld()
         {
-            GraphQLRequest request = new GraphQLRequest(_httpClient)
+            GraphQLRequest request = new(_httpClient)
             {
                 OperationName = "welcome",
                 Query = @"{

@@ -6,7 +6,7 @@ namespace graphqlapi.Services
 {
     public class FhirServiceInMemory : IFhirService
     {
-        private IList<Questionnaire> _questionnaires;
+        private readonly IList<Questionnaire> _questionnaires;
 
         public FhirServiceInMemory()
         {
@@ -20,9 +20,9 @@ namespace graphqlapi.Services
 
         private IList<Questionnaire> LoadQuestionnaires()
         {
-            IList<Questionnaire> questionnaires = new List<Questionnaire>();
+            List<Questionnaire> questionnaires = new();
 
-            Questionnaire generalQuestionnaire = new Questionnaire()
+            Questionnaire generalQuestionnaire = new()
             {
                 Text = new Narrative() { 
                     Status = NarrativeStatus.Generated, 

@@ -1,12 +1,9 @@
+using Microsoft.AspNetCore.Components.Web;
 using Microsoft.AspNetCore.Components.WebAssembly.Authentication;
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Logging;
 using System;
-using System.Collections.Generic;
-using System.Net.Http;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace blazorui
@@ -17,8 +14,7 @@ namespace blazorui
         {
             var builder = WebAssemblyHostBuilder.CreateDefault(args);
             builder.RootComponents.Add<App>("#app");
-
-            
+            builder.RootComponents.Add<HeadOutlet>("head::after");            
 
             builder.Services.AddMsalAuthentication(options =>
             {
@@ -26,10 +22,7 @@ namespace blazorui
                 options.ProviderOptions.LoginMode = "redirect";
                 options.ProviderOptions.DefaultAccessTokenScopes.Add("openid");
                 options.ProviderOptions.DefaultAccessTokenScopes.Add(builder.Configuration["APIScope"]);
-                
             });
-
-            //builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri(builder.HostEnvironment.BaseAddress) });
 
             builder.Services.AddHttpClient<GraphQLAPIClient>(
                     client => client.BaseAddress = new Uri(builder.Configuration["APIBaseURL"]))
@@ -37,8 +30,6 @@ namespace blazorui
                     .ConfigureHandler(
                             authorizedUrls: new[] { builder.Configuration["APIBaseURL"] },
                             scopes: new[] { builder.Configuration["APIScope"] }));
-
-
 
             await builder.Build().RunAsync();
         }

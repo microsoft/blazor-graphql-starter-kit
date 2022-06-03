@@ -1,10 +1,7 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using System.Security.Claims;
-using HotChocolate;
-using HotChocolate.Types;
-using graphqlapi.Models;
+﻿using graphqlapi.Models;
 using System;
+using System.Collections.Generic;
+using System.Security.Claims;
 
 namespace graphqlapi.Resolvers
 {
