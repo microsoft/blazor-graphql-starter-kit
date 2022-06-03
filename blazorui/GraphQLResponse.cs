@@ -7,6 +7,5 @@ namespace blazorui
     {
         [JsonPropertyName("data")]
         public JsonDocument Data { get; set; }
-
     }
 }

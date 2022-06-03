@@ -10,7 +10,7 @@ namespace blazorui
 {
     internal class GraphQLRequest
     {
-        private HttpClient _httpClient;
+        private readonly HttpClient _httpClient;
 
         [JsonPropertyName("OperationName")]
         public string OperationName { get; set; }
@@ -41,15 +41,12 @@ namespace blazorui
                     var stream = await response.Content.ReadAsStreamAsync();
                     var gq = await JsonSerializer.DeserializeAsync<GraphQLResponse>(stream);
                     data = gq.Data;
-                    
-
                 }
             }
             catch (AccessTokenNotAvailableException exception)
             {
                 exception.Redirect();
             }
-
 
             return data;
 
