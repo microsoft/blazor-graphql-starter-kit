@@ -4,13 +4,13 @@
 
 We wanted to create a one stop tutorial for anyone wanting to create their own Blazor WASM application backed by GraphQL / EntityFramework. 
 
-> **Go [check out](https://github.com/microsoft/emerging-opportunities/blob/main/MotherBox/Readme.md) our internal tool that inspired us to create this template**
+> **Go [check out](https://github.com/microsoft/emerging-opportunities/tree/main/Projects/MotherBox) our internal tool that inspired us to create this template**
 
 > This repo contains sample code for creating a secure app with the following stack.
 > UI: Blazor Web Assembly (WASM)
 > API: GraphQL based on the HotChocolate package
 
-[What is a GraphQL?](https://github.com/microsoft/emerging-opportunities/tree/main/MotherBox/GraphQL)
+[What is a GraphQL?](https://github.com/microsoft/emerging-opportunities/tree/main/Projects/MotherBox/learnings/GraphQL)
 
 > In this app the UI uses Azure AD for auth.  The API is protected and only accepts authorized requests with a valid Oaauth token.
 
